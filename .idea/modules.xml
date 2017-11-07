@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CodingExercise.iml" filepath="$PROJECT_DIR$/CodingExercise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CodingExercise_main.iml" filepath="$PROJECT_DIR$/.idea/modules/CodingExercise_main.iml" group="CodingExercise" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CodingExercise_test.iml" filepath="$PROJECT_DIR$/.idea/modules/CodingExercise_test.iml" group="CodingExercise" />
+    </modules>
+  </component>
+</project>
