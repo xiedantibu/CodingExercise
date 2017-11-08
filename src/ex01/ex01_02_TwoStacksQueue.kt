@@ -7,7 +7,7 @@ import java.util.*
  * 【题目】编写一个类，用两个栈实现队列，支持队列的基本操作(add,poll,peek)
  * 栈的特点是先进后出，而队列的特点是先进先出。我们用两个栈正好把顺序反过来实现类似序列的操作。
  * */
-class TwoStacksQueue<T : Any> {
+class TwoStacksQueue<T> {
     private val mStacksPush = Stack<T>()
     private val mStacksPop = Stack<T>()
 
