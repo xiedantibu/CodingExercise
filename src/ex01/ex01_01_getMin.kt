@@ -2,6 +2,7 @@ package ex01._01_getMin
 
 import util.tools.*
 import java.util.*
+import kotlin.Comparator
 
 /**
  *设计一个有getMin的栈
@@ -10,10 +11,10 @@ import java.util.*
  * 1.pop/push/getMin操作的时间复杂度都是O(1)
  * 2.设计的栈类型可以使用现成的栈结构
  * */
-object MyStack {
-    private val m_StackData: Stack<Int> = Stack()
-    private val m_StackMin: Stack<Int> = Stack()
-    private fun push(value: Int) {
+class MyStack<T:Comparable<T>> {
+    private val m_StackData: Stack<T> = Stack()
+    private val m_StackMin: Stack<T> = Stack()
+    private fun push(value: T) {
         when {
             m_StackMin.isEmpty() -> m_StackMin.push(value)
             m_StackMin.peek() > value -> m_StackMin.push(value)
@@ -21,22 +22,22 @@ object MyStack {
         m_StackData.push(value)
     }
 
-    fun push(vararg value: Int) = value.forEach { push(it) }
-    fun pop(): Int? {
+    fun push(vararg value: T) = value.forEach { push(it) }
+    fun pop(): T? {
         if (m_StackData.isEmpty()) return null
         val popValue = m_StackData.pop()
         if (popValue == m_StackMin.peek()) m_StackMin.pop()
         return popValue
     }
 
-    fun getMin(): Int? = if (m_StackMin.isEmpty()) null else m_StackMin.peek()
+    fun getMin(): T? = if (m_StackMin.isEmpty()) null else m_StackMin.peek()
 }
 
-object MyStack2 {
-    private val mStackData: Stack<Int> = Stack()
-    private val mStackMin: Stack<Int> = Stack()
+class MyStack2<T:Comparable<T>> {
+    private val mStackData: Stack<T> = Stack()
+    private val mStackMin: Stack<T> = Stack()
 
-    private fun push(value: Int) {
+    private fun push(value: T) {
         when {
             mStackMin.isEmpty() -> mStackMin.push(value)
             mStackMin.peek() > value -> mStackMin.push(value)
@@ -45,9 +46,9 @@ object MyStack2 {
         mStackData.push(value)
     }
 
-    fun push(vararg value: Int) = value.forEach { push(it) }
+    fun push(vararg value: T) = value.forEach { push(it) }
 
-    fun pop(): Int? = when {
+    fun pop(): T? = when {
         mStackData.isEmpty() -> null
         else -> {
             mStackMin.pop()
@@ -55,26 +56,28 @@ object MyStack2 {
         }
     }
 
-    fun getMin(): Int? = if (mStackMin.isEmpty()) null else mStackMin.peek()
+    fun getMin(): T? = if (mStackMin.isEmpty()) null else mStackMin.peek()
 }
 
 fun main(args: Array<String>) {
-    MyStack.push(3, 4, 5, 1, 2, 1)
-    MyStack.getMin()?.println()
-    MyStack.pop()?.println()
-    MyStack.pop()?.println()
-    MyStack.pop()?.println()
-    MyStack.pop()?.println()
-    MyStack.pop()?.println()
-    MyStack.pop()?.println()
-    MyStack.pop()?.println()
+    val myStack = MyStack<Int>()
+    myStack.push(3, 4, 5, 1, 2, 1)
+    myStack.getMin()?.println()
+    myStack.pop()?.println()
+    myStack.pop()?.println()
+    myStack.pop()?.println()
+    myStack.pop()?.println()
+    myStack.pop()?.println()
+    myStack.pop()?.println()
+    myStack.pop()?.println()
     "=====MyStack2======".println()
-    MyStack2.push(3, 4, 5, 1, 2, 1)
-    MyStack2.getMin()?.println()
-    MyStack2.pop()?.println()
-    MyStack2.pop()?.println()
-    MyStack2.pop()?.println()
-    MyStack2.pop()?.println()
-    MyStack2.pop()?.println()
-    MyStack2.pop()?.println()
+    val myStack2 = MyStack2<Int>()
+    myStack2.push(3, 4, 5, 1, 2, 1)
+    myStack2.getMin()?.println()
+    myStack2.pop()?.println()
+    myStack2.pop()?.println()
+    myStack2.pop()?.println()
+    myStack2.pop()?.println()
+    myStack2.pop()?.println()
+    myStack2.pop()?.println()
 }
